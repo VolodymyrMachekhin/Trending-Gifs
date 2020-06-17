@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+// To disable debug obfuscation Settings -> Compiler -> Command line options -> -PdisableObfuscation
+def enableDebugObfuscation = !project.hasProperty('disableObfuscation')
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.vmac.giphy"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+        dataBinding = true
+        aidl = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+
+        debug {
+            debuggable true
+            minifyEnabled enableDebugObfuscation
+            shrinkResources enableDebugObfuscation
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
+    kapt "com.github.bumptech.glide:compiler:$glideVer"
+
+    List implementationList = [
+            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            "androidx.appcompat:appcompat:1.1.0",
+            "androidx.constraintlayout:constraintlayout:1.1.3",
+            "androidx.fragment:fragment-ktx:1.2.4",
+
+            "com.squareup.okhttp3:okhttp:$okhttpVer",
+
+            "com.google.dagger:dagger:$daggerVer",
+
+            "com.squareup.retrofit2:retrofit:$retrofitVer",
+            "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer",
+            "com.squareup.retrofit2:converter-moshi:$retrofitVer",
+
+            "com.github.bumptech.glide:glide:$glideVer",
+
+            "io.reactivex.rxjava2:rxkotlin:2.4.0",
+
+            "com.squareup.okhttp3:logging-interceptor:4.7.2",
+
+            // First lib that I found, bette to replace if it is bad
+            "com.first.avatargenerator:AvatarImageGenerator:1.3",
+
+            "io.reactivex.rxjava2:rxjava:2.2.19",
+            "io.reactivex.rxjava2:rxandroid:2.1.1",
+            "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$bindingCollectionVer",
+            "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$bindingCollectionVer"
+    ]
+
+    implementation implementationList
+    implementation project(":domain")
+    implementation project(":network")
+    implementation project(":common-utils")
+
+    testImplementation project(":test-commons")
+}

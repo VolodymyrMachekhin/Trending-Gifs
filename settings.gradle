@@ -1,0 +1,6 @@
+include ':test-commons'
+include ':common-utils'
+include ':network'
+include ':domain'
+include ':app'
+rootProject.name = "Giphy"

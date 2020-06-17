@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":domain")
+    List testDependencies = [
+            "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0",
+            "com.squareup.okhttp3:mockwebserver:$okhttpVer",
+            "com.squareup.okhttp3:okhttp:$okhttpVer",
+
+            "junit:junit:4.13"
+    ]
+    api testDependencies
+}
