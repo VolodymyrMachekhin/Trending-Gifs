@@ -1,57 +1,23 @@
+import com.vmac.giphy.Deps
+import com.vmac.giphy.GiphyPlugin
+
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply plugin: GiphyPlugin
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    testImplementation 'junit:junit:4.12'
-    kapt "com.google.dagger:dagger-compiler:$daggerVer"
 
     List implementationList = [
-            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-            "com.squareup.okhttp3:okhttp:$okhttpVer",
-
-            "com.google.dagger:dagger:$daggerVer",
-
-            "com.squareup.retrofit2:retrofit:$retrofitVer",
-            "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer",
-            "com.squareup.retrofit2:converter-moshi:$retrofitVer",
-            "io.reactivex.rxjava2:rxjava:2.2.19",
-            "io.reactivex.rxjava2:rxkotlin:2.4.0",
-            "io.reactivex.rxjava2:rxandroid:2.1.1"
-    ]
-
-    List apiList = [
-            "com.squareup.okhttp3:okhttp:$okhttpVer",
-            "com.squareup.retrofit2:retrofit:$retrofitVer",
-            "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer",
-            "com.squareup.retrofit2:converter-moshi:$retrofitVer"
+            Deps.rxJava,
+            Deps.rxKotlin,
+            Deps.rxandroid,
+            Deps.okhttp3,
+            Deps.retrofit2Moshi,
+            Deps.retrofit2,
+            Deps.retrofit2RxAdapter
     ]
 
     implementation implementationList
-    api apiList
 
     implementation project(":domain")
     implementation project(":common-utils")

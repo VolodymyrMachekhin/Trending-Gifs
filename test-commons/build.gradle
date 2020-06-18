@@ -1,3 +1,6 @@
+import com.vmac.giphy.Deps
+import com.vmac.giphy.Versions
+
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
@@ -6,8 +9,8 @@ dependencies {
     implementation project(":domain")
     List testDependencies = [
             "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0",
-            "com.squareup.okhttp3:mockwebserver:$okhttpVer",
-            "com.squareup.okhttp3:okhttp:$okhttpVer",
+            "com.squareup.okhttp3:mockwebserver:$Versions.okhttpVer",
+            Deps.okhttp3,
 
             "junit:junit:4.13"
     ]
