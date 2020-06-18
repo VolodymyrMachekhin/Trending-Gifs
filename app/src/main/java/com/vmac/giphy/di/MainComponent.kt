@@ -9,8 +9,7 @@ import javax.inject.Singleton
     modules = [
         UtilsModule::class,
         RepositoryModule::class,
-        RetrofitModule::class,
-        ContextModule::class
+        RetrofitModule::class
     ]
 )
 interface MainComponent {

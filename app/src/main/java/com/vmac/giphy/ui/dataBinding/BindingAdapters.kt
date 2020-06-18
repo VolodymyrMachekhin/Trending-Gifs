@@ -10,10 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-@BindingAdapter("ratingColor")
-fun RatingBar.setRatingColor(@ColorRes colorRes: Int) {
-    progressDrawable.setTint(ContextCompat.getColor(context, colorRes))
-}
 
 @BindingAdapter("visible")
 fun View.visibleOrGone(visible: Boolean) {

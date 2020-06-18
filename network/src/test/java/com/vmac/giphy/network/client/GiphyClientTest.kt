@@ -1,6 +1,6 @@
 package com.vmac.giphy.network.client
 
-import com.vmac.giphy.test.commons.trendingGifsDto
+import com.vmac.giphy.network.trendingGifsDto
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -38,6 +38,6 @@ class GiphyClientTest {
         client.getTrending(api_key = "", offset = 0, limit = 0)
             .test()
             .assertComplete()
-            .assertValue(com.vmac.giphy.test.commons.trendingGifsDto)
+            .assertValue(trendingGifsDto)
     }
 }

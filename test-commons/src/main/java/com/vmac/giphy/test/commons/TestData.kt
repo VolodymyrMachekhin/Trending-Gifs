@@ -25,11 +25,3 @@ val trendingGifs = TrendingGifs(
     ),
     totalTrendingCount = 104354
 )
-
-val testLogger = object : Logger {
-    override fun e(throwable: Throwable?, message: String) {
-    }
-
-    override fun d(throwable: Throwable?, message: String) {
-    }
-}

@@ -30,9 +30,6 @@ class TrendingViewModel @Inject constructor(
     @get:Bindable
     var progressVisible: Boolean by observable(false, BR.progressVisible)
 
-    @get:Bindable
-    var totalCountLabel: String by observable("", BR.totalCountLabel)
-
     private var loadingMoreFinished: Boolean = false
 
     val giphyListItems: ObservableArrayList<GiphyListItem> = ObservableArrayList()
