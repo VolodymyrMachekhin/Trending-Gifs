@@ -36,6 +36,7 @@ object Versions {
 object Deps {
     val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     val androidxAppCompat = "androidx.appcompat:appcompat:$androidxAppCompatVer"
+    val androidxCore = "androidx.core:core-ktx:1.2.0"
     val androidxConstraintlayout =
         "androidx.constraintlayout:constraintlayout:$androidxConstraintlayoutVer"
     val androidxFragment = "androidx.fragment:fragment-ktx:$androidxFragmentVer"
